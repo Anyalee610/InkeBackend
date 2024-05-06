@@ -20,5 +20,6 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ReactView.as_view(), name="contact"),
+    path('contact/', ReactView.as_view(), name="contact"),
+    path('fet/', FetchView.as_view(), name="fetch"),
 ]

@@ -8,12 +8,7 @@ from . serializer import *
 
 class ReactView(APIView):
 
-    serializer_class = ReactSerializer
-
-    def get(self, request):
-        output = [{"firstname": output.firstname, "lastname": output.lastname, "email": output.email}
-                  for output in React.objects.all()]
-        return Response(output)
+    serializer_class = ReactSerializer 
 
     def post(self, request):
 
@@ -21,3 +16,12 @@ class ReactView(APIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+        
+
+class FetchView(APIView):
+    serializer_class = ReactSerializer
+
+    def get(self, request):
+        output = [{"firstname": output.firstname, "lastname": output.lastname, "email": output.email}
+                  for output in React.objects.all()]
+        return Response(output)
